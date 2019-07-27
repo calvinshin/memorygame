@@ -1,0 +1,10 @@
+.cardStyle {
+    width: 200px;
+    display: inline-block;
+    height: 280px;
+}
+
+.imageStyle {
+    max-width: 60%;
+    max-height: 60%;
+}

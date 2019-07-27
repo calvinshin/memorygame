@@ -1,26 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import cards from "./cards.json"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Jumbotron from "./components/Jumbotron"
+import Card from "./components/Card"
+
+// import shuffle from "./functions/shuffle"
+
+class App extends React.Component {
+  state = {cards}
+
+  shuffle = () => {
+    console.log("Test click")
+    for(let i = cards.length - 1; i > 0; i -- ) {
+      let j = Number;
+      j = Math.floor(Math.random() * (i + 1));
+      [cards[i], cards[j]] = [cards[j], cards[i]];
+    }
+    this.setState({cards:cards})
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Jumbotron />
+        <div className="" onClick={this.shuffle}>
+          {cards.map(card =>
+            <Card
+              image = {card.image}
+              key = {card.id} />)}
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
